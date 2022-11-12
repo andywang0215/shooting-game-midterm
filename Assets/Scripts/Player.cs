@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
 
     private CharacterController controller;
 
-    private GameObject focusEnemy;
+    private GameObject focusMonster;
 
     void Start()
     {
@@ -25,19 +25,19 @@ public class Player : MonoBehaviour
     void Update()
     {
         // 找到最近的一個目標 Enemy 的物件
-        GameObject[] enemys = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] Monsters = GameObject.FindGameObjectsWithTag("Monster");
 
         float miniDist = 9999;
-        foreach (GameObject enemy in enemys)
+        foreach (GameObject Monster in Monsters)
         {
             // 計算距離
-            float d = Vector3.Distance(transform.position, enemy.transform.position);
+            float d = Vector3.Distance(transform.position, Monster.transform.position);
 
             // 跟上一個最近的比較，有比較小就記錄下來
             if (d < miniDist)
             {
                 miniDist = d;
-                focusEnemy = enemy;
+                focusMonster = Monster;
             }
         }
 
@@ -66,9 +66,9 @@ public class Player : MonoBehaviour
         else
         {
             // 沒有移動輸入，並且有鎖定的敵人，漸漸面向敵人
-            if (focusEnemy)
+            if (focusMonster)
             {
-                var targetRotation = Quaternion.LookRotation(focusEnemy.transform.position - transform.position);
+                var targetRotation = Quaternion.LookRotation(focusMonster.transform.position - transform.position);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 20 * Time.deltaTime);
             }
         }
