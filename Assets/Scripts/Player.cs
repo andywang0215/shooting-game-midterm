@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
 {
     public float speed = 10;
     public Joystick joyStick;
-    public Transform firePoint;
-    
+    public Transform rightfirePoint;
+    public Transform lefttfirePoint;
     public GameObject bulletPrefab;
 
     private CharacterController controller;
@@ -88,8 +88,8 @@ public class Player : MonoBehaviour
     void Fire()
     {
         // 產生出子彈
-        Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation);
-       
+        Instantiate(bulletPrefab, rightfirePoint.transform.position, transform.rotation);
+        Instantiate(bulletPrefab, lefttfirePoint.transform.position, transform.rotation);
     }
 
 
