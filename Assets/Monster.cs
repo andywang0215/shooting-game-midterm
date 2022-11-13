@@ -6,6 +6,9 @@ public class Monster : MonoBehaviour
 {
     
     public float hp = 500f;
+    
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +20,7 @@ public class Monster : MonoBehaviour
     {
         
     }
+    
 
     
     private void OnTriggerEnter(Collider other)

@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         // 找到最近的一個目標 Enemy 的物件
         GameObject[] Monsters = GameObject.FindGameObjectsWithTag("Monster");
 
-        float miniDist = 9999;
+        float miniDist = 100;
         foreach (GameObject Monster in Monsters)
         {
             // 計算距離
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
 
 
 
-        
+
 
         // 取得虛擬搖桿輸入
         float h = joyStick.Horizontal;
@@ -96,13 +96,14 @@ public class Player : MonoBehaviour
     // 一直射擊的 Coroutine 函式
     IEnumerator KeepShooting()
     {
-        while (true)
+        while(true)
         {
             // 射擊
             Fire();
 
             // 暫停 0.5 秒
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1);
         }
     }
+   
 }
