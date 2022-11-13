@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private CharacterController controller;
 
     private GameObject focusMonster;
+    private GameObject focusBoss;
 
     void Start()
     {
@@ -38,6 +39,22 @@ public class Player : MonoBehaviour
             {
                 miniDist = d;
                 focusMonster = Monster;
+            }
+        }
+        // 找到最近的一個目標 Enemy 的物件
+        GameObject[] boss = GameObject.FindGameObjectsWithTag("Boss");
+
+        float MiniDist = 100;
+        foreach (GameObject Boss in boss)
+        {
+            // 計算距離
+            float d = Vector3.Distance(transform.position, Boss.transform.position);
+
+            // 跟上一個最近的比較，有比較小就記錄下來
+            if (d < miniDist)
+            {
+                miniDist = d;
+                focusBoss = Boss;
             }
         }
 
@@ -71,6 +88,11 @@ public class Player : MonoBehaviour
                 var targetRotation = Quaternion.LookRotation(focusMonster.transform.position - transform.position);
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 20 * Time.deltaTime);
             }
+            else if (focusBoss)
+            {
+                var targetRotation = Quaternion.LookRotation(focusBoss.transform.position - transform.position);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 20 * Time.deltaTime);
+            }
         }
 
         // 地心引力 (y)
@@ -102,7 +124,7 @@ public class Player : MonoBehaviour
             Fire();
 
             // 暫停 0.5 秒
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5F);
         }
     }
    

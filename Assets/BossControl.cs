@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossControl : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class BossControl : MonoBehaviour
             {
                 this.gameObject.SetActive(false);
                 Destroy(gameObject);
+                SceneManager.LoadScene("Level2");
             }
         }
     }
