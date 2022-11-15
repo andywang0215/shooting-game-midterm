@@ -36,7 +36,7 @@ public class BossControl : MonoBehaviour
             {
                 this.gameObject.SetActive(false);
                 Destroy(gameObject);
-                SceneManager.LoadScene("Level2");
+                SceneManager.LoadScene("L2_rule");
             }
         }
     }
