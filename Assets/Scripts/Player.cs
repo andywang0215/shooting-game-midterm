@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
             // 跟上一個最近的比較，有比較小就記錄下來
             if (d < miniDist)
             {
-                miniDist = d;
+                MiniDist = d;
                 focusBoss = Boss;
             }
         }

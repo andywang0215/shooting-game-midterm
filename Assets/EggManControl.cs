@@ -33,7 +33,7 @@ public class EggManControl : MonoBehaviour
             {
                 this.gameObject.SetActive(false);
                 Destroy(gameObject);
-                SceneManager.LoadScene("Level2");
+                
             }
         }
     }
