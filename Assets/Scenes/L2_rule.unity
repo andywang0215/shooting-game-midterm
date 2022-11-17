@@ -459,7 +459,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "    \u7B2C\u4E00\u95DC\u8AAA\u660E\n\n\n\n\n\n\n \u5B50\u5F48\u653B\u64CA\u529B\uFF1A50\n\n 
+  m_Text: "    \u7B2C\u4E8C\u95DC\u8AAA\u660E\n\n\n\n\n\n\n \u5B50\u5F48\u653B\u64CA\u529B\uFF1A50\n\n 
     5\u79D2\u5F8C\u7522\u751F\u602A\u7269\n\n \u602A\u7269\u751F\u547D\u529B\uFF1A1000\n\n10\u79D2\u5F8C\u7522\u751FBoss\n\nBoss\u751F\u547D\u529B\uFF1A4000\n\n\n"
 --- !u!222 &754713807
 CanvasRenderer:

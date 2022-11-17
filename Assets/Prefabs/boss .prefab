@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1348871422588634335}
   - component: {fileID: 6155047954883313001}
   - component: {fileID: 6701515287228908390}
+  - component: {fileID: -1117554947588551511}
   m_Layer: 0
   m_Name: 'boss '
   m_TagString: Boss
@@ -132,3 +133,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9beddeee8d4d048beb0892c70d606c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 3000
+--- !u!111 &-1117554947588551511
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2543616363681515747}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: e11476b060ca04b16a019e23000711f2, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: e11476b060ca04b16a019e23000711f2, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
