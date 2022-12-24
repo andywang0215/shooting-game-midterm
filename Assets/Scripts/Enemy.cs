@@ -35,14 +35,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Monster");
-
-        // 如果陣列長度為0 （陣列內沒東西）
-        if (objs.Length == 0)
-        {
-            // 切換到下一關
-            SceneManager.LoadScene("L2_rule");
-        }
+        
         float d = Vector3.Distance(transform.position, superman.transform.position);
            
             // Idle (閒置) 

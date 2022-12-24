@@ -39,6 +39,8 @@ public class Monster : MonoBehaviour
             {
                 this.gameObject.SetActive(false);
                 Destroy(gameObject);
+
+               
             }
         }
     }
