@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Player : MonoBehaviour
     public Transform rightfirePoint;
     public Transform lefttfirePoint;
     public GameObject bulletPrefab;
-
+    public float hp = 500;
     private CharacterController controller;
 
     private GameObject focusMonster;
@@ -25,6 +26,14 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Monster");
+
+        // 如果陣列長度為0 （陣列內沒東西）
+        if (objs.Length == 0)
+        {
+            // 切換到下一關
+            SceneManager.LoadScene("L2_rule");
+        }
         // 找到最近的一個目標 Enemy 的物件
         GameObject[] Monsters = GameObject.FindGameObjectsWithTag("Monster");
 
@@ -41,22 +50,7 @@ public class Player : MonoBehaviour
                 focusMonster = Monster;
             }
         }
-        // 找到最近的一個目標 Enemy 的物件
-        GameObject[] boss = GameObject.FindGameObjectsWithTag("Boss");
-
-        float MiniDist = 100;
-        foreach (GameObject Boss in boss)
-        {
-            // 計算距離
-            float d = Vector3.Distance(transform.position, Boss.transform.position);
-
-            // 跟上一個最近的比較，有比較小就記錄下來
-            if (d < miniDist)
-            {
-                MiniDist = d;
-                focusBoss = Boss;
-            }
-        }
+       
 
 
 
@@ -127,5 +121,24 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(0.1F);
         }
     }
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        // 如果碰撞到的是子彈
+        if (other.tag == "Bullet")
+        {
+            // 先取得子彈的攻擊力
+            Bullet bullet = other.GetComponent<Bullet>();
+
+            // 先扣血
+            hp -= bullet.atk;
+
+            // 如果沒血了，就刪除自己
+            if (hp <= 0)
+            {
+                this.gameObject.SetActive(false);
+                Destroy(gameObject);
+            }
+        }
+    }
+
 }

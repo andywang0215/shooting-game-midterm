@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
@@ -34,7 +35,15 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-            float d = Vector3.Distance(transform.position, superman.transform.position);
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("Monster");
+
+        // 如果陣列長度為0 （陣列內沒東西）
+        if (objs.Length == 0)
+        {
+            // 切換到下一關
+            SceneManager.LoadScene("L2_rule");
+        }
+        float d = Vector3.Distance(transform.position, superman.transform.position);
            
             // Idle (閒置) 
             if (status == EnemyStatus.Idle)
