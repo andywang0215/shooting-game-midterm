@@ -9,12 +9,12 @@ public class Enemy : MonoBehaviour
     public EnemyStatus status;
     private NavMeshAgent agent;
     public GameObject Player;
-    public Transform superman;
+    public Transform play;
     public GameObject bulletPrefab;
     private IEnumerator fireCoroutine;
     public Transform firePoint;
     private bool isAttacking = false;
-    public float hp = 100;
+    public float hp = 200;
 
     // Start is called before the first frame update
 
@@ -36,13 +36,13 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         
-        float d = Vector3.Distance(transform.position, superman.transform.position);
+        float d = Vector3.Distance(transform.position, play.transform.position);
            
             // Idle (閒置) 
             if (status == EnemyStatus.Idle)
             {
                 // 往 Chase 判斷
-                if (d < 10)
+                if (d < 12)
                 {
                     status = EnemyStatus.Chase;
                     return;
@@ -58,12 +58,12 @@ public class Enemy : MonoBehaviour
             if (status == EnemyStatus.Chase)
             {
                 // 往 Idle 的判斷
-                if (d > 12)
+                if (d > 15)
                 {
                     status = EnemyStatus.Idle;
                     return;
                 }
-                if (d < 5)
+                if (d < 10)
                 {
                    status = EnemyStatus.Attack;
                    return;
@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour
            if (status == EnemyStatus.Attack)
            {
             // 往 Chase 的判斷
-              if (d > 5)
+              if (d > 10)
               {
                 status = EnemyStatus.Chase;
                 StopCoroutine(fireCoroutine);
@@ -113,7 +113,7 @@ public class Enemy : MonoBehaviour
         private void Chase()
         {
             agent.isStopped = false;
-            agent.SetDestination(superman.position);
+            agent.SetDestination(play.position);
         }
 
     // 狀態行為：攻擊
@@ -122,7 +122,7 @@ public class Enemy : MonoBehaviour
         agent.isStopped = true;
 
         // 看向目標
-        transform.LookAt(superman);
+        transform.LookAt(play);
 
         // 只執行一次，開始重複射擊
         if (!isAttacking)
@@ -141,14 +141,14 @@ public class Enemy : MonoBehaviour
             Instantiate(bulletPrefab, firePoint.transform.position, transform.rotation);
 
             // 停兩秒
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.7f);
         }
     }
 
     private void Escape()
     {
         agent.isStopped = false;
-        agent.SetDestination(superman.position);
+        agent.SetDestination(play.position);
     }
 
     private void OnTriggerEnter(Collider other)

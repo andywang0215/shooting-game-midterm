@@ -166,10 +166,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   status: 0
   Player: {fileID: 0}
-  superman: {fileID: 0}
-  bulletPrefab: {fileID: 1115838527061322291, guid: 42eca3b8b32f74b5a87206045fcc4d98, type: 3}
+  play: {fileID: 0}
+  bulletPrefab: {fileID: 4217214404354103746, guid: c3bd2458666bf4787b611c5d622aa736, type: 3}
   firePoint: {fileID: 9199346076264201793}
-  hp: 100
+  hp: 200
 --- !u!195 &9199346076739437342
 NavMeshAgent:
   m_ObjectHideFlags: 0

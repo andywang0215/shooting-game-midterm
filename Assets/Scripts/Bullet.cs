@@ -20,12 +20,13 @@ public class Bullet : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        
-        if (other.tag == "Monster")
+
+        if (other.tag == "Monster"||other.tag == "Wall"||other.tag== "BallMan")
         {
             // 刪除自己
             gameObject.SetActive(false);
             Destroy(gameObject);
         }
+
     }
 }

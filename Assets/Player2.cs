@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public class Player2 : MonoBehaviour
 {
     public float speed = 10;
     public Joystick joyStick;
@@ -26,32 +26,33 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        
-        GameObject[] objs = GameObject.FindGameObjectsWithTag("Monster");
+        GameObject[] bm = GameObject.FindGameObjectsWithTag("BallMan");
 
         // 如果陣列長度為0 （陣列內沒東西）
-        if (objs.Length == 0)
+        if (bm.Length == 0)
         {
             // 切換到下一關
-            SceneManager.LoadScene("L2_rule");
+            SceneManager.LoadScene("Menu");
         }
         
-        GameObject[] Monsters = GameObject.FindGameObjectsWithTag("Monster");
+
+       
+        GameObject[] BallMans = GameObject.FindGameObjectsWithTag("BallMan");
 
         float miniDist = 100;
-        foreach (GameObject Monster in Monsters)
+        foreach (GameObject BallMan in BallMans)
         {
             // 計算距離
-            float d = Vector3.Distance(transform.position, Monster.transform.position);
+            float d = Vector3.Distance(transform.position, BallMan.transform.position);
 
             // 跟上一個最近的比較，有比較小就記錄下來
             if (d < miniDist)
             {
                 miniDist = d;
-                focusMonster = Monster;
+                focusMonster = BallMan;
             }
         }
-       
+
 
 
 
@@ -113,7 +114,7 @@ public class Player : MonoBehaviour
     // 一直射擊的 Coroutine 函式
     IEnumerator KeepShooting()
     {
-        while(true)
+        while (true)
         {
             // 射擊
             Fire();
@@ -138,7 +139,7 @@ public class Player : MonoBehaviour
             {
                 this.gameObject.SetActive(false);
                 Destroy(gameObject);
-                
+
             }
         }
     }
